@@ -3,7 +3,7 @@ Coded in C++ with OpenGL (GLFW for windowing, GLSL shader programming, GLM for m
 
 Open Application.exe to run
 
-Controls:
+Controls:\n
 1 - render bunny object
 2 - render sandal object
 3 - render bear object
