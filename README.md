@@ -1,5 +1,5 @@
 # OpenGL-Interactive-Light-Simulation
-Coded in C++ with OpenGL (GLFW for windowing, GLSL shader programming, GLM for matrix/vector computation)
+Coded in C++ with OpenGL (GLFW for windowing, GLSL for shader programming, GLM for matrix/vector computation)
 
 Open Application.exe to run
 
