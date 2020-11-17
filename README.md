@@ -15,13 +15,13 @@ X - switch to "Mode 2"
 C - switch to "mode 3"
 
 In Mode 1:
-Right mouse button to rotate object
+Left mouse button to rotate object
 Scroll to scale object
 
 In Mode 2:
-Right mouse button to rotate light around the object
+Left mouse button to rotate light around the object
 Scroll to move light closer to or farther from the center
 
 In Mode 3:
-Right mouse button to rotate light and object together
+Left mouse button to rotate light and object together
 Scroll to scale object and move light closer to or farther from the center

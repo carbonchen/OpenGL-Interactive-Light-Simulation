@@ -1,12 +1,12 @@
-#include "PointCloud.h"
+#include "Geometry.h"
 #include <iostream>
 #include <sstream>
 #include <fstream>
 
 // initialize static variable light position
-glm::vec3 PointCloud::lightPos = glm::vec3(-8.0f, 8.0f, 0.0f);
+glm::vec3 Geometry::lightPos = glm::vec3(-8.0f, 8.0f, 0.0f);
 
-PointCloud::PointCloud(std::string objFilename, std::string name) 
+Geometry::Geometry(std::string objFilename, std::string name) 
 	: objectName(name)
 {
 
@@ -157,7 +157,7 @@ PointCloud::PointCloud(std::string objFilename, std::string name)
 	glBindVertexArray(0);
 }
 
-PointCloud::~PointCloud() 
+Geometry::~Geometry() 
 {
 	// Delete the VBO and the VAO.
 	glDeleteBuffers(1, &VBO);
@@ -165,7 +165,7 @@ PointCloud::~PointCloud()
 	glDeleteVertexArrays(1, &VAO);
 }
 
-void PointCloud::draw(const glm::mat4& view, const glm::mat4& projection, GLuint shader)
+void Geometry::draw(const glm::mat4& view, const glm::mat4& projection, GLuint shader)
 {
 	// Activate the shader program 
 	glUseProgram(shader);
@@ -202,7 +202,7 @@ void PointCloud::draw(const glm::mat4& view, const glm::mat4& projection, GLuint
 }
 
 /*
-	void PointCloud::update()
+	void Geometry::update()
 	{
 		use this function for testing purposes
 		loops infinitely
@@ -210,7 +210,7 @@ void PointCloud::draw(const glm::mat4& view, const glm::mat4& projection, GLuint
 */
 
 // scale object when scrolling (mode1, mode3)
-void PointCloud::scale(int yoff) {
+void Geometry::scale(int yoff) {
 	if (yoff > 0) {
 		model = glm::scale(model, glm::vec3(1.25f));
 	}
@@ -220,7 +220,7 @@ void PointCloud::scale(int yoff) {
 }
 
 // move light to/from center when scrolling (mode2, mode3)
-void PointCloud::moveCloserToModel(int yoff) {
+void Geometry::moveCloserToModel(int yoff) {
 	// move distance is (dist from origin)/5
 	float xmove = std::abs(model[3][0])/5;
 	float ymove = std::abs(model[3][1])/5;
@@ -251,12 +251,12 @@ void PointCloud::moveCloserToModel(int yoff) {
 	}
 }
 
-void PointCloud::rotateControl(glm::vec3 axis, float angle) {
+void Geometry::rotateControl(glm::vec3 axis, float angle) {
 	model = glm::rotate(angle, axis) * model;
 }
 
 // tell shader which render mode to use
-void PointCloud::switchRenderFunc() {
+void Geometry::switchRenderFunc() {
 	if (switchRender == 0) {
 		switchRender = 1;
 	}
@@ -266,24 +266,24 @@ void PointCloud::switchRenderFunc() {
 }
 
 // tell shader which obj's material to render
-void PointCloud::toRabbitMat() {
+void Geometry::toRabbitMat() {
 	rabbitMatInt = 1;
 	sandalMatInt = 0;
 	bearMatInt = 0;
 }
-void PointCloud::toSandalMat() {
+void Geometry::toSandalMat() {
 	rabbitMatInt = 0;
 	sandalMatInt = 1;
 	bearMatInt = 0;
 }
-void PointCloud::toBearMat() {
+void Geometry::toBearMat() {
 	rabbitMatInt = 0;
 	sandalMatInt = 0;
 	bearMatInt = 1;
 }
 
 // force shader to update coloring when light is moved
-void PointCloud::updateLight() {
+void Geometry::updateLight() {
 	lightPos.x = model[3][0];
 	lightPos.y = model[3][1];
 	lightPos.z = model[3][2];

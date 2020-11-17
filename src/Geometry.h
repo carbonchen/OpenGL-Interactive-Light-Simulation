@@ -1,5 +1,5 @@
-#ifndef _POINT_CLOUD_H_
-#define _POINT_CLOUD_H_
+#ifndef _GEOMETRY_H_
+#define _GEOMETRY_H_
 
 #include "Object.h"
 
@@ -8,7 +8,7 @@
 
 using namespace std;
 
-class PointCloud : public Object
+class Geometry : public Object
 {
 private:
 	std::vector<glm::vec3> points;
@@ -26,8 +26,8 @@ private:
 	int bearMatInt = 0;
 
 public:
-	PointCloud(std::string objFilename, std::string name);
-	~PointCloud();
+	Geometry(std::string objFilename, std::string name);
+	~Geometry();
 	
 	void draw(const glm::mat4& view, const glm::mat4& projection, GLuint shader);
 	//void update();

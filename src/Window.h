@@ -4,7 +4,7 @@
 #include "main.h"
 #include "shader.h"
 #include "Object.h"
-#include "PointCloud.h"
+#include "Geometry.h"
 
 class Window
 {
@@ -16,10 +16,10 @@ public:
 	static const char* windowTitle;
 
 	// Objects to Render
-	static PointCloud* bunnyPoints;
-	static PointCloud* sandalPoints;
-	static PointCloud* bearPoints;
-	static PointCloud* spherePoints;
+	static Geometry* bunnyPoints;
+	static Geometry* sandalPoints;
+	static Geometry* bearPoints;
+	static Geometry* spherePoints;
 
 	// Camera Matrices
 	static glm::mat4 projection;

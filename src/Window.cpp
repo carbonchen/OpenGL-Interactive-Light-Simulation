@@ -6,10 +6,10 @@ int Window::height;
 const char* Window::windowTitle = "OpenGL Project";
 
 // Objects to Render
-PointCloud* Window::bunnyPoints;
-PointCloud* Window::sandalPoints;
-PointCloud* Window::bearPoints;
-PointCloud* Window::spherePoints;
+Geometry* Window::bunnyPoints;
+Geometry* Window::sandalPoints;
+Geometry* Window::bearPoints;
+Geometry* Window::spherePoints;
 Object* currObj;
 
 // Camera Matrices 
@@ -48,10 +48,10 @@ bool Window::initializeProgram() {
 
 bool Window::initializeObjects()
 {
-	bunnyPoints = new PointCloud("../obj/bunny.obj", "bunny");
-	sandalPoints = new PointCloud("../obj/SandalF20.obj", "sandal");
-	bearPoints = new PointCloud("../obj/bear.obj", "bear");
-	spherePoints = new PointCloud("../obj/sphere.obj", "sphere");
+	bunnyPoints = new Geometry("bunny.obj", "bunny");
+	sandalPoints = new Geometry("SandalF20.obj", "sandal");
+	bearPoints = new Geometry("bear.obj", "bear");
+	spherePoints = new Geometry("sphere.obj", "sphere");
 	currObj = bunnyPoints;
 	return true;
 }
@@ -177,7 +177,7 @@ void Window::keyCallback(GLFWwindow* window, int key, int scancode, int action, 
 			glfwSetWindowShouldClose(window, GL_TRUE);				
 			break;
 
-		// switch between pointclouds/objects
+		// switch between Geometrys/objects
 		case GLFW_KEY_1:
 			currObj = bunnyPoints;
 			currObj->toRabbitMat();
@@ -224,14 +224,14 @@ void Window::keyCallback(GLFWwindow* window, int key, int scancode, int action, 
 
 // when mouse button held down, allow object rotation on cursor move
 void Window::mouse_button_callback(GLFWwindow* window, int button, int action, int mods) {
-	if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS) {
+	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS) {
 		mouseDown = true;
 
 		double xpos, ypos;
 		glfwGetCursorPos(window, &xpos, &ypos);
 		lastMousePoint = trackball(glm::vec2(xpos, ypos));
 	}
-	if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_RELEASE) {
+	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE) {
 		mouseDown = false;
 	}
 }
