@@ -20,8 +20,8 @@ Scroll to scale object
 
 In Mode 2:
 Left mouse button to rotate light around the object
-Scroll to move light closer to or farther from the center
+Scroll to move light closer to or farther from the object
 
 In Mode 3:
 Left mouse button to rotate light and object together
-Scroll to scale object and move light closer to or farther from the center
+Scroll to scale object and move light closer to or farther from the object
